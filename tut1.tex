@@ -1,0 +1,311 @@
+% if u dont want pauses use : \documentclass[handout]{beamer}
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ stmaryrd }
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usetheme{Madrid}
+% \mode<presentation>{}
+\usecolortheme{default}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[MA109 Calculus-I] %optional
+{MA109 Calculus-I}
+
+\subtitle{D4-T6 Tutorial 1}
+
+\author[Adish Shah] % (optional)
+{Adish Shah}
+
+
+
+\date[8th December 2021] % (optional)
+{8th December 2021}
+
+
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+\begin{frame}
+  \frametitle{Definition of convergence of a sequence}
+  \begin{block}{Definition}
+    Let $(a_{n})$ be a sequence of real numbers. We say that $(a_{n})$ is convergent if there is $L \in \mathbb{R}$ such that
+    the following condition holds. For every $\epsilon > 0 $, there is $n_{0} \in \mathbb{N}$ such that 
+    $|a_{n}-L| < \epsilon $ for all $n \ge n_{0}$.
+  \end{block}  
+  This is known as the $\epsilon - n_{0}$ definition of convergence of a sequence.
+
+  In this case, we say that $(a_{n})$ converges to L, or that L is the limit of $(a_{n})$, and we write
+
+  \[\lim_{n \rightarrow \infty} a_{n} = L \]
+
+  Some properties of convergent sequences :
+  \begin{itemize}
+    \item<1-> Every convergent sequence is bounded.
+    \item<2-> Every bounded \textbf{and} monotonic sequence is convergent.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{1 (iii)}
+
+To Prove : \[\lim_{n \rightarrow \infty} \frac{n^{2/3}\sin(n!)}{n+1} = 0 \] \pause
+
+Let $\epsilon > 0$ be given. We need to show that \( \exists n_{0} \in \mathbb{N}\) such that 
+\[\bigg |\frac{n^{2/3}\sin(n!)}{n+1} - 0 \bigg | < \epsilon \; \; \; \forall n \ge n_{0}\] \pause
+
+Simplifying the LHS : 
+Use the fact that \(|sinx| \le 1 \; \; \forall x\)
+\[\bigg |\frac{n^{2/3}\sin(n!)}{n+1} \bigg | \le \bigg |\frac{n^{2/3}}{n+1} \bigg | < \bigg |\frac{n^{2/3}}{n} \bigg | < \epsilon\] \pause
+\[ \frac{1}{n^{1/3}} < \epsilon  \iff \frac{1}{\epsilon^{3}} < n \]. \pause
+Thus, we can choose $n_{0} = \floor{\frac{1}{\epsilon^{3}}} +1 $ and the desired inequality holds.
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{1 (iv)}
+
+    \[\lim_{n \rightarrow \infty} \left(\frac{n}{n+1} - \frac{n+1}{n}\right)  = 0\] \pause
+
+    Let $\epsilon > 0$ be given. We need to show that \( \exists n_{0} \in \mathbb{N}\) such that 
+    \[\bigg |\left(\frac{n}{n+1} - \frac{n+1}{n}\right) - 0 \bigg | < \epsilon \; \; \; \forall n \ge n_{0}\]\pause
+
+    Simplifying the LHS : 
+    \[\bigg |\frac{n}{n+1} - \frac{n+1}{n} \bigg | = \bigg |1 - \frac{1}{n+1} - 1 - \frac{1}{n} \bigg | = \bigg |\frac{1}{n+1} + \frac{1}{n} \bigg | < \frac{2}{n} < \epsilon\] \pause
+    
+    Choose $n_{0} = \floor{\frac{2}{\epsilon}} + 1$ and the required inequality holds.
+\end{frame}
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+    \frametitle{2 (i)}
+
+    Let \[B_{n} =  \left (\frac{n}{n^{2}+1} + \frac{n}{n^{2}+2} + \cdots + \frac{n}{n^{2}+n}\right)  \] \pause
+    Consider 
+    \[A_{n} =   \left (\frac{n}{n^{2}+n} + \frac{n}{n^{2}+n} + \cdots + \frac{n}{n^{2}+n}\right)  \] 
+    \[C_{n} =   \left (\frac{n}{n^{2}+1} + \frac{n}{n^{2}+1} + \cdots + \frac{n}{n^{2}+1}\right)  \]\pause
+
+    We can observe that, \pause
+    \[A_{n} \le B_{n} \le C_{n} \] 
+    Note that \(\lim_{n \rightarrow \infty } A_{n} = \lim_{n \rightarrow \infty} \frac{n^2}{n^2+n} = 1 \) and \pause
+    \(\lim_{n \rightarrow \infty } C_{n} = \lim_{n \rightarrow \infty} \frac{n^2}{n^2+1} = 1 \) \pause
+
+    Using Sandwich Theorem, \(\lim_{n \rightarrow \infty } B_{n} = 1\)
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{2 (iv)}
+
+    \[\lim_{n \rightarrow \infty} n^{1/n} \]\pause
+    Define $h_{n} = n^{1/n} - 1$\pause
+
+    Note that $n^{1/n} \ge 1$, hence $h_{n} \ge 0 \; \; \forall n \in \mathbb{N}$. 
+    For $ n > 2$, we have :\pause
+    \[n = (1 + h_{n})^{n} > 1 + nh_{n}+n_{C_{2}}h_{n}^{2} > n_{C_{2}}h_{n}^{2}> \frac{n(n-1)}{2}h_{n}^{2} \]\pause
+    Thus,  \[0 < h_{n} < \sqrt{\frac{2}{n-1}} \; \; \; \forall n > 2 \] \pause
+    Hence, by using Sandwich Theorem we get that \(lim_{n \rightarrow \infty}h_{n} = 0 \)
+    \[ \implies \lim_{n \rightarrow \infty} n^{1/n} = 1 \]
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{2 (v)}
+
+    \[\lim_{n \rightarrow \infty} \frac{\cos(\pi \sqrt{n})}{n^{2}}\] \pause
+    \[-1 \le \cos(\pi \sqrt{n}) \le 1 \; \; \forall n \in \mathbb{N} \] \pause
+    Therefore,
+    \[ \frac{-1}{n^{2}} \le \frac{\cos(\pi \sqrt{n})}{n^{2}} \le  \frac{1}{n^{2}}\] \pause
+    \[\]
+    Hence, using Sandwich Theorem, the limit = 0.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{2 (vi)}
+    \[\lim_{n \rightarrow \infty} \sqrt{n}(\sqrt{n+1} - \sqrt{n} )\]
+    
+    Rationalize \\
+
+    \[ a_{n} = \sqrt{n}\frac{(\sqrt{n+1} - \sqrt{n} )(\sqrt{n+1} + \sqrt{n} )}{(\sqrt{n+1} + \sqrt{n} )}= \frac{\sqrt{n}}{\sqrt{n+1} + \sqrt{n}}\]\pause
+    \[\frac{\sqrt{n}}{\sqrt{n+1} + \sqrt{n+1}} <  a_{n} < \frac{\sqrt{n}}{\sqrt{n} + \sqrt{n}}\] \pause
+    \[\dfrac{\sqrt{n}}{\sqrt{n+1} + \sqrt{n+1}} = \dfrac{1}{2}\sqrt{\dfrac{n}{n+1}} = \dfrac{1}{2}\sqrt{1 - \dfrac{1}{n+1}} \ge \dfrac{1}{2}\left(1 - \dfrac{1}{\sqrt{n+1}}\right) \]\pause
+    We have shown that :
+    \[ \dfrac{1}{2}\left(1 - \dfrac{1}{\sqrt{n+1}}\right) < a_{n} < \frac{1}{2}\]
+    Using Sandwich Theorem, the limit is  $\frac{1}{2}$
+\end{frame}
+
+\begin{frame}
+  \frametitle{3(i)}
+  \[a_{n} = \frac{n^{2}}{n+1} \; \; \; \forall n \ge 1\] \pause
+  \[a_{n} = \frac{n^2-1+1}{n+1} = \frac{(n-1)(n+1)+1}{n+1} = n-1 + \frac{1}{n+1}\] \pause
+
+
+  Clearly $a_{n}$ is unbounded and hence it is not a convergent sequence.
+\end{frame}
+
+\begin{frame}
+    \frametitle{4 (i)}
+    \[a_{n} = \frac{n}{n^{2}+1}\] \pause
+    Consider \(a_{n+1}-a_{n}\)
+    \[a_{n+1}-a_{n} = \frac{n+1}{(n+1)^{2}+1} - \frac{n}{n^2+1} = \frac{-n-n^{2}+1}{((n+1)^{2}+1)(n^{2}+1)} \]\pause
+    \[a_{n+1}-a_{n} = \frac{-(n^{2}+n-1)}{((n+1)^2+1)(n^{2}+1)} < 0 \]\pause
+    Therefore $a_{n}$ is a decreasing sequence.
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{4 (iii)}
+    \[a_{n} = \frac{1-n}{n^{2}} \; \; \; \forall n \ge 2\]\pause
+    Consider \(a_{n+1}-a_{n} \; \; \; \forall n \ge 2\)
+    \[a_{n+1}-a_{n} = \frac{1-(n+1)}{(n+1)^{2}} - \frac{1-n}{n^2} = \frac{n-1}{n^2} - \frac{n}{(n+1)^{2}} \]\pause
+    \[a_{n+1}-a_{n} = \frac{(n^{2}-n-1)}{n^{2}(n+1)^2} = \frac{(n-2)^{2}+3(n-2)+1}{n^{2}(n+1)^2} > 0  \]\pause
+    Therefore $a_{n}$ is an increasing sequence.
+\end{frame}
+
+\begin{frame}
+  \frametitle{5 (ii)}
+  \[a_{1} = \sqrt{2}, \; a_{n+1} = \sqrt{2+a_{n}}  \; \; \forall n \ge 1\] \pause
+  First we prove that the sequence is bounded. \pause
+
+  Claim : $\sqrt{2} \le a_{n} < 2 \; \forall n \ge 1$ \pause 
+
+  Proof by Induction : 
+
+  We can see that the claim holds for $n = 1$ as $\sqrt{2} \le a_{1} < 2$. \pause
+
+  Let us assume that the claim holds for $ n = k$ $ \implies \sqrt{2} \le  a_{k} < 2$.\pause
+
+  Now, $a_{k+1} = \sqrt{2+a_{k}}$ $ \implies a_{k+1}^{2} = 2 + a_{k}$.\pause
+
+  From the induction hypothesis, $a_{k+1}^{2} < 2 + 2$. $ \implies a_{k+1} < 2$. Also \pause
+  $a_{k+1}^{2} \ge 2 + \sqrt{2} \implies a_{k+1} \ge \sqrt{2}$.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{5 (ii)}
+  Next we show that the sequence is monotonic.\pause
+
+  Consider $a_{n+1} - a_{n}$ : 
+  \[a_{n+1} - a_{n} = \sqrt{2+a_{n}} - a_{n} = \frac{(\sqrt{2+a_{n}} - a_{n})(\sqrt{2+a_{n}} + a_{n})}{\sqrt{2+a_{n}} + a_{n}} \] \pause
+
+  \[ \implies a_{n+1} - a_{n} = \frac{2+a_{n} - a_{n}^{2}}{\sqrt{2+a_{n}} + a_{n}} = \frac{(2-a_{n})(1+a_{n})}{\sqrt{2+a_{n}} + a_{n}}  > 0 \] 
+  Therefore $a_{n}$ is a monotonically increasing sequence.\pause
+
+  We have shown that the sequence is convergent as it is monotonic and bounded.
+  \[\lim_{n \rightarrow \infty} a_{n} = \lim_{n \rightarrow \infty} a_{n+1} = L\]
+  Take limit on both sides of the equation : \( a_{n+1} = \sqrt{2+a_{n}} \)
+  \[ L = \sqrt{2+L} \implies L^{2} = 2 + L \implies L = 2\]
+\end{frame}
+
+\begin{frame}
+    \frametitle{7)}
+    Given \(\lim_{n \rightarrow \infty} a_{n} = L \neq 0 \). \pause
+    
+    Choose $\epsilon = \frac{|L|}{2}$ (which is indeed $> 0$). \pause
+    By the $\epsilon - n_{0}$ definition, for any $\epsilon > 0$, there exists $n_{0} \in \mathbb{N}$ such that 
+    $| a_{n} - L| < \epsilon = \frac{|L|}{2}$ for all $n \ge n_{0}$. \pause 
+
+    Using the triangle inequality, 
+    \[||a_{n}|-|L|| \le |a_{n}-L| < \frac{|L|}{2}  \]\pause
+    Thus,
+    \[-\frac{|L|}{2} < |a_{n}|-|L| < \frac{|L|}{2}  \] \pause
+    \[ \frac{|L|}{2} < |a_{n}| < 3\frac{|L|}{2}\] 
+    
+    for all $n \ge n_{0}$ as required.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{8)}
+    Given \(a_{n} \ge 0 \; \; \lim_{n \rightarrow \infty} a_{n} = 0 \). 
+    To prove \( \lim_{n \rightarrow \infty} a_{n}^{1/2} = 0 \) \pause
+
+    Let $\epsilon > 0$ be given. \( \implies \epsilon^{2} > 0 \) \pause
+
+    By the hypothesis, there exists $n_{0} \in \mathbb{N}$ such that 
+    $| a_{n} - 0| < \epsilon^{2}$ for all $n \ge n_{0}$. \pause 
+
+    Hence,
+    \[|a_{n}^{1/2}-0| = a_{n}^{1/2} < \epsilon \; \; \; \forall n \ge n_{0}\] \pause
+    Thus, by the definition of limit we have proved that \( \lim_{n \rightarrow \infty} a_{n}^{1/2} = 0 \)
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{10)}
+  To prove: \(a_{n}\) is convergent if and only if ($ \iff $) \(a_{2n}\) and \(a_{2n+1}\) are convergent to the same limit. \pause
+
+  Proof. ( $\implies$) Given $ \lim_{n \rightarrow \infty} a_{n} = L $.  \pause
+  Let $\epsilon > 0$ be given. 
+  
+  By the $\epsilon - n_{0}$ definition of the limit, $ \exists n_{0} \in \mathbb{N}$ such that 
+  $|a_{n} -L| < \epsilon \; \; \; \forall n \ge n_{0}$. \pause
+
+
+  $2n > n $ and $2n+1 > n$. So $|a_{2n} - L | < \epsilon$ and $|a_{2n+1} - L| < \epsilon \; \; \; \forall n \ge n_{0}$  \pause
+
+  Hence, $ \lim_{n \rightarrow \infty} a_{2n} = L $ and $ \lim_{n \rightarrow \infty} a_{2n+1} = L $
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{10)  Proof for ($\impliedby$)}
+  Given that $ \lim_{n \rightarrow \infty} a_{2n} =  \lim_{n \rightarrow \infty} a_{2n+1} = L $, we need to show that $ \lim_{n \rightarrow \infty} a_{n} = L $. \pause
+  
+  Let $\epsilon > 0$ be given. By the $\epsilon - n_{0}$ definition of the limit, $ \exists n_{1},n_{2} \in \mathbb{N}$ such that 
+  $|a_{2n} -L| < \epsilon \; \; \; \forall n \ge n_{1}$ and $|a_{2n+1} -L| < \epsilon \; \; \; \forall n \ge n_{2}$ \pause
+
+  Choose $n_{0} = max(2n_{1},2n_{2}+1)$. Assume $n > n_{0}$ so that $n > 2n_{1}$ and $ n > 2n_{2}+1$. \pause
+  
+  If $n$ is even, then $ n = 2m$ for some $m \in \mathbb{N}$, and $2m>2n_{1} \implies m > n_{1}$, hence 
+  \[|a_{n}-L| = |a_{2m}-L| < \epsilon\] \pause
+
+  If $n$ is odd, then $ n = 2m+1$ for some $m$, and $2m+1>2n_{2}+1 \implies m > n_{2}$, hence 
+  \[|a_{n}-L| = |a_{2m+1}-L| < \epsilon\] \pause
+
+  In either case, $|a_{n}-L| < \epsilon \; \; \; \forall n > n_{0}$. Hence  $ \lim_{n \rightarrow \infty} a_{n} = L $
+
+\end{frame}
+
+
+
+
+
+\end{document}
