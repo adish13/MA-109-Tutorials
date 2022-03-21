@@ -1,0 +1,262 @@
+\documentclass[handout]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ stmaryrd }
+\usepackage{tikz}
+
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usetheme{Madrid}
+% \mode<presentation>{}
+\usecolortheme{default}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\cosec}{\operatorname{cosec}}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[MA109 Calculus-I] %optional
+{MA109 Calculus-I}
+
+\subtitle{D4-T6 Tutorial 6}
+
+\author[Adish Shah] % (optional)
+{Adish Shah}
+
+
+
+\date[4th January 2022] % (optional)
+{4th January 2022}
+
+
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+% \begin{frame}
+% 	\frametitle{{Fundamental Theorem of Calculus : Part 1}}
+% 	\begin{theorem}[Fundamental Theorem of Calculus : Part 1]
+% 		Let $f$ be integrable on $[a, b]$. For $x \in [a,b]$,define\\
+% 		\[F(x) := \int_{a}^{b}f(t)dt\] 
+% 	Then $F$ is continuous on $[a,b]$. Morover, if $f$ is continuous at $c \in [a,b]$,
+% 	then $F$ is differentiable at $c$, and $F'(c) = f(c)$
+% 	\end{theorem}
+
+% \end{frame}
+% \begin{frame}
+% 	\frametitle{{Fundamental Theorem of Calculus : Part 2}}
+% 	\begin{theorem}[Fundamental Theorem of Calculus : Part 2]
+% 		Let $f:[a, b] \to \mathbb{R}$ be a differentiable function such that\\
+% 		$f'$ is integrable on $[a, b],$. Then\\
+% 		\[\int_{a}^{b}f'(x)dx = f(b)-f(a)\]
+% 	\end{theorem}
+% \end{frame}
+
+%---------------------------------------------------------
+%Changing visivility of the text
+
+\begin{frame}
+    \frametitle{2}
+    If $f:D\in\mathbb{R}^n\to\mathbb{R}$ be a function. Then the main difference between a level curve and a contour line is that level curve is a subset of $\mathbb{R}^n$ but contour line is a subset of $\mathbb{R}^{n+1}$.\\
+  (i) Given any $c$ from the options, the level curve is the line $x - y = c$ in the $XY$ plane, that is, the set of points $\{(x,\;y) \in \mathbb{R}^2 : x - y = c\}$ in $\mathbb{R}^2.$\\
+	The contour line for that $c$ is the line in $\mathbb{R}^3$ which consists of the set of points $\{(x,\;y,\;z)\in\mathbb{R}^3 : x - y = c,\;z = c\}.$ That is, it is the contour line just shifted parallel-y in the $z-$direction.\\
+	(ii) For $c<0$ the level curve and contour lines are null set. For $c=0$ the level curve is the singleton set $\{(0,0)\}$ and contour line is the singleton set $\{(0,0,0)\}$. For $c>0$ the level curve is the circle with center $(0,0)$, radius $\sqrt{c}$ and lies in $\mathbb{R}^2$ and contour line is the circle with center $(0,0,c)$, radius $\sqrt{c}$, parallel to the $x-y$ plane and lies in $\mathbb{R}^3$.\\
+	(iii)Here if $c\neq 0$ then the level curve is a hyperbola in $\mathbb{R}^2$ and the contour is a hyperbola which is parallel to the $x-y$ plane in $\mathbb{R}^3$. If $c=0$ instead of parabola it will be a pair of straight lines.
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{3(i)}
+    Claim: the function is not continuous at $(0,\;0).$\\
+	\emph{Proof.} Consider the following sequence $(x_n,\;y_n) = \left(\frac{1}{n},\;\frac{1}{n^3}\right).$ It is clear that $(x_n,\;y_n) \to (0,\;0).$\\
+	But $f(x_n,\;y_n) = \frac{1/n^6}{2/n^6} = \frac{1}{2}.$ Thus, $f(x_n,\;y_n) \to \frac{1}{2} \neq 0.$\\
+	Thus, $f$ is not continuous at $(0,\;0).$
+\end{frame}
+
+\begin{frame}
+	\frametitle{3(ii)}
+    Claim: the given function is continuous at $(0,\;0).$\\
+	\emph{Proof.} Let $(x_n,\;y_n)$ be any sequence in $\mathbb{R}^2$ such that $(x_n,\;y_n) \to (0,\;0).$ Then, $x_n \to 0$ and $y_n \to 0.$ \hfill (1)\\
+	Note that if $(x_n,\;y_n) \neq (0,\;0),$ then $\left|\dfrac{x^2 - y^2}{x^2 + y^2}\right| \le 1.$\\
+	Thus, $0 \le |f(x_n,\;y_n)| \le \left|x_ny_n\right|.$ \hfill (This inequality holds even if $(x_n,\;y_n) = (0,\;0).$)\\
+	Note that (1) tells us that $x_ny_n \to 0.$\\
+    Using Sandwich Theorem we get that $\displaystyle\lim_{n\to \infty}|f(x_n,\;y_n)| = 0$. 
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{6)}
+    (i) Let $f:\mathbb{R}^2 \to \mathbb{R}$ denote the function given.\\
+	Then, 
+	\begin{align*}
+		\frac{\partial f}{\partial x}(0,\;0) &= \displaystyle\lim_{h\to 0}\frac{f(0+h,\;0) - f(0,\;0)}{h}\\
+		&= \displaystyle\lim_{h\to 0}\left(h\cdot0\cdot\frac{h^2 - 0^2}{h^2 + 0^2}\right)\frac{1}{h} \\
+		&= 0
+	\end{align*}
+	It can be verified that $\frac{\partial f}{\partial y}(0,\;0)$ also exists and equals $0$ in a similar manner
+\end{frame}
+
+\begin{frame}
+	\frametitle{6) continued}
+	(ii) Let $f:\mathbb{R}^2 \to \mathbb{R}$ denote the function given.\\
+	Then, 
+	\begin{align*}
+		\frac{\partial f}{\partial x}(0,\;0) &= \displaystyle\lim_{h\to 0}\frac{f(0+h,\;0) - f(0,\;0)}{h}\\
+		&= \displaystyle\lim_{h\to 0}\left(\frac{\sin^2(h)}{h|h|}\right)
+	\end{align*}
+	The right hand limit is 1 and left hand limit is -1. So it doesn't exist. We get the exact same limit for $\frac{\partial f}{\partial y}(0,0)$. So it also doesn't exist.
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{7)}
+    The continuity of $f$ at $(0,\;0)$ can be showed using the fact that $|f(x,\;y)| \le |x^2 + y^2|.$ (Use Sandwich Theorem)\\~\\
+        It can also be easily verified that $\frac{\partial f}{\partial x}(0,\;0) = \frac{\partial f}{\partial y}(0,\;0) = 0.$ (Write the expression like the previous questions and arrive at the conclusion.)\\~\\
+        Now, let us evaluate $\frac{\partial f}{\partial x}(x_0,\;y_0)$ for $(x_0,\;y_0) \neq (0,\;0).$\\
+        It can be easily evaluated using product and chain rules to be:
+        \[\frac{\partial f}{\partial x}(x_0,\;y_0) = 2x\left(\sin\left(\frac{1}{x^2 + y^2}\right) - \frac{1}{x^2 + y^2}\cos\left(\frac{1}{x^2 + y^2}\right)\right).\]
+        The function $\displaystyle2x\sin\left(\frac{1}{x^2 + y^2}\right)$ is bounded in any disc centered at $(0,\;0).$ \hfill (By Sandwich Theorem)\\
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{7) continued}
+        However, $\displaystyle\frac{2x}{x^2 + y^2}\cos\left(\frac{1}{x^2 + y^2}\right)$ is not bounded in any such disc. To see this, consider any $r > 0$ and any $M \in \mathbb{R}.$ One can find an $n \in \mathbb{N}$ such that $\frac{1}{\sqrt{n\pi}} < r$ and $\sqrt{n\pi} > M.$ \hfill (By Archimedean)\\
+        In that case, the point $(x_0,\;y_0) = (1/\sqrt{2n\pi},\;0)$ will lie in the disc centered at $(0,\;0)$ with radius $r$ and $f(x_0,\;y_0) > M.$\\~\\
+        As the sum of a bounded function and an unbounded function is unbounded, we have proven the result.
+    \end{frame}
+
+
+\begin{frame}
+	\frametitle{8)}
+    The continuity of $f$ is immediate. It is extremely similar to what we've seen many times by now.\\
+	Let us show that the partial derivatives don't exist.\\
+	The partial derivative of $f$ at $(0,\;0)$ with respect to the first variable $(x)$ is given by
+	\[\lim_{h\to 0}\frac{f(0 + h,\; 0) - f(0,\;0)}{h} = \lim_{h\to 0}\sin\left(\frac{1}{h}\right),\]
+	which we know does not exist.\\
+	Similar considerations apply for the other partial derivative.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{9(i)}
+    Let $f:\mathbb{R}^2 \to \mathbb{R}$ denote the function given in the question.\\
+	For a unit vector $\textbf{u} := (u_1, u_2)$ and $t \neq 0,$
+	\[\lim_{t \to 0} \frac{f\left(0+t u_{1}, 0+t u_{2}\right)-f(0,0)}{t} = u_1u_2(u_1^2 - u_2^2)t.\]
+	Hence, $\left(\mathbf{D_u} f\right)(0,0)$ exists and equals $0$ for all $\textbf{u}.$ Thus, all directional derivatives exist.\\~\\
+	\emph{If} $f$ is differentiable, then the total derivative \emph{must} be $(\frac{\partial f}{\partial x}(0, 0), \frac{\partial f}{\partial y}(0, 0)) = (0, 0).$ Let us now see whether this does indeed satisfy the condition for being the total derivative. For that, we must check whether
+	\[\lim _{(h, k) \rightarrow(0,0)} \frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-\frac{\partial f}{\partial x}(0,0) h-\frac{\partial f}{\partial y}(0,0) k}{\sqrt{h^{2}+k^{2}}}=0.\]
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{9(i) continued}
+	For $(h,k) \neq (0,0),$ we have it that
+	\[\frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-0 h-0 k}{\sqrt{h^{2}+k^{2}}} = hk\frac{(h^2 - k^2)}{(h^2 + k^2)^{3/2}}.\]
+	Also, note that
+	\[\left|hk\frac{(h^2 - k^2)}{(h^2 + k^2)^{3/2}}\right| \le \left|h\frac{k}{\sqrt{h^2 + k^2}}\right| \le |h|.\]
+	Thus, the required limit indeed does exist and equals $0.$\\
+	Hence, $f$ is differentiable at $(0,0)$ with (total) derivative equal to $(0, 0).$
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{9 (ii) }
+    Let $f:\mathbb{R}^2 \to \mathbb{R}$ denote the function given in the question.\\
+	For a unit vector $\textbf{u} := (u_1, u_2)$ and $t \neq 0,$
+	\[\lim_{t \to 0} \frac{f\left(0+t u_{1}, 0+t u_{2}\right)-f(0,0)}{t} = u_1^3.\]
+	Hence, $\left(\mathbf{D_u} f\right)(0,0)$ exists and equals $u_1^3$ for all $\textbf{u}.$ Thus, all directional derivatives exist.\\~\\
+	\emph{If} $f$ is differentiable, then the total derivative \emph{must} be $(\frac{\partial f}{\partial x}(0, 0), \frac{\partial f}{\partial y}(0, 0)) = (1, 0).$ Let us now see whether this does indeed satisfy the condition for being the total derivative. For that, we must check whether
+	\[\lim _{(h, k) \rightarrow(0,0)} \frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-\frac{\partial f}{\partial x}(0,0) h-\frac{\partial f}{\partial y}(0,0) k}{\sqrt{h^{2}+k^{2}}}=0.\]
+\end{frame}
+\begin{frame}
+    \frametitle{9 (ii) continued}
+
+	For $(h,k) \neq (0,0),$ we have it that
+	\[\frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-1h-0 k}{\sqrt{h^{2}+k^{2}}} = -\frac{hk^2}{(h^2 + k^2)^{3/2}}.\]
+	It can be seen that the limit for the above expression as $(h, k) \to (0, 0)$ does not exist. Indeed, if one approaches $(0, 0)$ along the curve $h = mk,$ the limit along that path turns out to be $-m/(1 + m^2)^{3/2}.$ Thus, taking $m = 1$ and $m = 0$ demonstrates the non-existence of limit.
+\end{frame}
+\begin{frame}	
+    \frametitle{9 (iii)}
+
+    Let $f:\mathbb{R}^2 \to \mathbb{R}$ denote the function given in the question.\\
+	For a unit vector $\textbf{u} := (u_1, u_2)$ and $t \neq 0,$
+	\[\lim_{t \to 0} \frac{f\left(0+t u_{1}, 0+t u_{2}\right)-f(0,0)}{t} = t\sin\left(\frac{1}{t^2}\right).\]
+	Hence, $\left(\mathbf{D_u} f\right)(0,0)$ exists and equals $0$ for all $\textbf{u}.$ \hfill (Sandwich Theorem)\\
+	Thus, all directional derivatives exist.\\~\\
+	\emph{If} $f$ is differentiable, then the total derivative \emph{must} be $(\frac{\partial f}{\partial x}(0, 0), \frac{\partial f}{\partial y}(0, 0)) = (0, 0).$ Let us now see whether this does indeed satisfy the condition for being the total derivative. For that, we must check whether
+	\[\lim _{(h, k) \rightarrow(0,0)} \frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-\frac{\partial f}{\partial x}(0,0) h-\frac{\partial f}{\partial y}(0,0) k}{\sqrt{h^{2}+k^{2}}}=0.\]
+
+\end{frame}
+\begin{frame}	
+    \frametitle{9 (iii) continued}
+
+	For $(h,k) \neq (0,0),$ we have it that
+	\[\frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-0 h-0 k}{\sqrt{h^{2}+k^{2}}} = \sqrt{h^2 + k^2}\sin\left(\frac{1}{h^2 + k^2}\right).\]
+	Also, note that
+	\[\left|\sqrt{h^2 + k^2}\sin\left(\frac{1}{h^2 + k^2}\right)\right| \le \left|\sqrt{h^2 + k^2}\right|.\]
+	Thus, the required limit indeed does exist and equals $0.$\\
+	Hence, $f$ is differentiable at $(0,0)$ with (total) derivative equal to $(0, 0).$
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{10)}
+    $\underset{(x,y)\to(x_0,y_0)}{\lim} f(x,y)=L$ iff $\forall \epsilon>0 \; \; \;  \exists \delta >0$ such that
+    \begin{align*}
+    (x,y)\in D_f,0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\delta\Rightarrow |f(x,y)-L|<\epsilon
+    \end{align*}
+    Here for $L=0$ , $\delta=\epsilon$ works $\forall \epsilon>0$ as $|f(x,y)-L|=\sqrt{x^2+y^2}$. So it is continuous at $(0,0)$.
+
+    For a unit vector $\textbf{u} := (u_1, u_2)$ and $t \neq 0,$
+	\[\lim_{t \to 0} \frac{f\left(0+t u_{1}, 0+t u_{2}\right)-f(0,0)}{t} = \left\{
+		\begin{array}{c c}
+			0 & u_2 = 0\\
+			\frac{u_2}{|u_2|} & u_2 \neq 0
+		\end{array}
+	\right.\]
+	Hence, $\left(\mathbf{D_u} f\right)(0,0)$ exists for all $\textbf{u}.$ Thus, all directional derivatives exist.\\~\\
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{10) continued}
+    \emph{If} $f$ is differentiable, then the total derivative \emph{must} be $(\frac{\partial f}{\partial x}(0, 0), \frac{\partial f}{\partial y}(0, 0)) = (0, 1).$  Let us now see whether this does indeed satisfy the condition for being the total derivative. For that, we must check whether
+	\[\lim _{(h, k) \rightarrow(0,0)} \frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-\frac{\partial f}{\partial x}(0,0) h-\frac{\partial f}{\partial y}(0,0) k}{\sqrt{h^{2}+k^{2}}}=0.\]
+	For $(h,k) \neq (0,0),$ we have it that
+	\[\frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-0 h- 1k}{\sqrt{h^{2}+k^{2}}} = \frac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}}.\]
+	It is clear that the limit of the above expression as $(h, k) \to (0, 0)$ does not exist. (Consider the paths $k = mh.$) Hence, $f$ is not differentiable at $(0, 0).$
+\end{frame}
+
+%---------------------------------------------------------
+
+
+
+\end{document}s

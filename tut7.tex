@@ -1,0 +1,237 @@
+\documentclass[handout]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ stmaryrd }
+\usepackage{tikz}
+
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usetheme{Madrid}
+% \mode<presentation>{}
+\usecolortheme{default}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\cosec}{\operatorname{cosec}}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[MA109 Calculus-I] %optional
+{MA109 Calculus-I}
+
+\subtitle{D4-T6 Tutorial 7}
+
+\author[Adish Shah] % (optional)
+{Adish Shah}
+
+
+
+\date[13th January 2022] % (optional)
+{13th January 2022}
+
+
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+\begin{frame}
+	\frametitle{Second Derivative Test}
+	\begin{theorem}
+		
+	\[D = f_{xx}(x_{0},y_{0})f_{yy}(x_{0},y_{0}) - [f_{xy}(x_{0},y_{0})]^{2} \]
+	\begin{enumerate}
+		\item If $D > 0$ and $f_{xx}(x_{0},y_{0}) > 0$, then $(x_{0},y_{0})$ is a local minimum for f
+		\item  If $D > 0$ and $f_{xx}(x_{0},y_{0}) < 0$, then $(x_{0},y_{0})$ is a local maximum for f
+		\item If $D < 0$, then $(x_{0},y_{0})$ is asaddle point for f
+		\item If $D = 0$ further examination of the function is necessary
+	\end{enumerate}
+	\end{theorem}
+
+\end{frame}
+% \begin{frame}
+% 	\frametitle{{Fundamental Theorem of Calculus : Part 2}}
+% 	\begin{theorem}[Fundamental Theorem of Calculus : Part 2]
+% 		Let $f:[a, b] \to \mathbb{R}$ be a differentiable function such that\\
+% 		$f'$ is integrable on $[a, b],$. Then\\
+% 		\[\int_{a}^{b}f'(x)dx = f(b)-f(a)\]
+% 	\end{theorem}
+% \end{frame}
+
+%---------------------------------------------------------
+% \begin{frame}
+% 	\frametitle{1)}
+%     Given \(F = x^{2} + 2xy -y^{2}+z^{2}\).
+%         Notice that the partial derivatives of $F$ do exist at $(1, -1, 3).$ Given any $(x_0, y_0, z_0),$ ,
+% 	\[\frac{\partial F}{\partial x}(x_0, y_0, z_0) = 2x_0 + 2y_0,\frac{\partial F}{\partial y}(x_0, y_0, z_0) = 2x_0 - 2y_0,\frac{\partial F}{\partial z}(x_0, y_0, z_0) = 2z_0.\]
+% 	Thus, \[(\nabla F)(1, -1, 3) = ( \frac{\partial F}{\partial x}(1, -1, 3), \frac{\partial F}{\partial y}(1,-1,3), \frac{\partial F}{\partial z}(1,-1,3)) = (0,4,6)\]\\
+% 	Moreover, the direction of the normal at to the surface $F(x, y, z) = c$ at the point $(x_0, y_0, z_0)$ is given by $(\nabla F)(x_0, y_0, z_0).$ \hfill \\
+% 	Thus, the required normal line is $(1, -1, 3) + t(0, 4, 6)$ as $t$ varies over $\mathbb{R}.$\\~\\
+% 	Also, the corresponding tangent plane is given by
+% 	\[0\cdot(x - 1) + 4(y + 1) + 6(z - 3) = 0. i.e \; \; 2y + 3z = 7\]
+% \end{frame}
+
+% \begin{frame}{Sheet 7}
+% 	(2) It is not too tough to show that the direction of the normal to a sphere at a point on the sphere is the same as the direction of the vector joining the center to that point.\\
+% 	Indeed, we get that $(\nabla S)(x_0, y_0, z_0) = 2(x_0, y_0, z_0),$ where $S(x, y, z) := x^2 + y^2 + z^2$ for $(x, y, z) \in \mathbb{R}^3.$\\
+% 	Thus, the required $\mathbf{u}$ is $\frac{1}{3}(2, 2, 1).$\\
+% 	Hence,
+% 	\[(\mathbf{D_u}F)(2, 2, 1) = \lim_{t\to 0}\frac{3(2t/3) - 5(2t/3) + 2(t/3)}{t} = -\frac{2}{3}.\]
+% \end{frame}
+
+\begin{frame}{Sheet 7}
+	(3) We shall assume that $z$ is a ``sufficiently smooth'' function of $x$ and $y.$\\
+	We are given that $\sin (x+y)+\sin (y+z)=1$ and $\cos (y+z) \neq 0.$\\ 
+	Differentiating with respect to $x$ while keeping $y$ constant gives us $\cos (x+y)+\cos (y+z) \frac{\partial z}{\partial x}=0.$ \hfill $(*)$\\~\\
+	Similarly, differentiating with respect to $y$ while keeping $x$ constant gives us $\cos (x+y)+\cos (y+z)\left(1+\frac{\partial z}{\partial y}\right)=0.$ \hfill $(**)$\\~\\
+	Differentiating $(*)$ with respect to $y$ gives us $-\sin (x+y)-\sin (y+z)\left(1+\frac{\partial z}{\partial y}\right) \frac{\partial z}{\partial x}+\cos (y+z) \frac{\partial^{2} z}{\partial x \partial y}=0.$ \footnote{Note that I have implicitly assumed that $\frac{\partial^2z}{\partial x\partial y} = \frac{\partial^2z}{\partial y\partial x}.$ However, using a different set of calculations, one can arrive at the same answer without assuming this. I encourage you to try that.}
+\end{frame}
+\begin{frame}{Sheet 7}
+	Thus, using $(*)$ and $(**),$ we get
+	\begin{align*} \frac{\partial^{2} z}{\partial x \partial y} &=\frac{1}{\cos (y+z)}\left[\sin (x+y)+\sin (y+z) \cdot\left(1+\frac{\partial z}{\partial y}\right) \frac{\partial z}{\partial x}\right] \\~\\ &=\frac{1}{\cos (y+z)}\left[\sin (x+y)+\sin (y+z)\left(-\frac{\cos (x+y)}{\cos (y+z)}\right)\left(-\frac{\cos (x+y)}{\cos (y+z)}\right)\right] \\~\\ &=\frac{\sin (x+y)}{\cos (y+z)}+\tan (y+z) \frac{\cos ^{2}(x+y)}{\cos ^{2}(y+z)} \end{align*}
+\end{frame}
+
+\begin{frame}{Sheet 7}
+	(4) We have that
+	\[f_{x y}(0,0)=\lim _{k \rightarrow 0} \frac{f_{x}(0, k)-f_{x}(0,0)}{k}.\]
+	For $k \neq 0,$ we know that
+	\[f_{x}(0, k)=\lim _{h \rightarrow 0} \frac{f(h, k)-f(0, k)}{h}=-k.\]
+	We also know that 
+	\[f_{x}(0,0)=\lim _{h \rightarrow 0} \frac{f(h, 0)-f(0,0)}{h}=0.\]
+\end{frame}
+
+\begin{frame}{Sheet 7}
+	Thus, we get that
+	\[f_{x y}(0,0)=\lim _{k \rightarrow 0} \frac{-k-0}{k}=-1.\]
+	By similar calculations, we get that $f_{y x}(0,0)=1.$\\
+	Thus, $f_{x y}(0,0) \neq f_{y x}(0,0).$\\~\\
+	For $(x,\;y) \neq (0,\;0),$ one can calculate the second derivatives and see that they turn out to be discontinuous at $(0,\;0).$
+	\[{f_{x}(x, y)=\frac{x^{4} y+4 x^{2} y^{3}-y^{5}}{\left(x^{2}+y^{2}\right)^{2}}, f_{y}(x, y)=\frac{x^{5}-4 x^{3} y^{2}-x y^{4}}{\left(x^{2}+y^{2}\right)^{2}}} \]
+	\[ {f_{xy}(x,y)=\frac{x^{6}+9 x^{4} y^{2}-9 x^{2} y^{4}-y^{6}}{\left(x^{2}+y^{2}\right)^{3}},f_{yx}(x, y)=\frac{x^{6}+9 x^{4} y^{2}-9 x^{2} y^{4}-y^{6}}{\left(x^{2}+y^{2}\right)^{3}}}\]
+\end{frame}
+%Changing visivility of the text
+
+
+\begin{frame}{Sheet 7}                            % change
+	5. (i) $f(x, y) = x^4 + y^4 + 4x - 32y -7, \quad (x_0, y_0) = (-1, 2).$\\
+	\uncover<1->{Note that the above function is defined on $D = \mathbb{R}^2.$}\\
+	\uncover<2->{Thus, the given point is an interior point of $D.$ Moreover, it can be seen that the partial derivatives of all orders exist and are continuous everywhere. }\\
+	\uncover<3->{Note that $(\nabla f)(x, y) = (4x^3 + 4, 4y^3 - 32)$.} \uncover<4->{Hence, $(\nabla f)(x_0, y_0) = 0.$ }\\
+	\uncover<5->{Thus, we can appeal to the determinant test. }\\~\\
+	\uncover<6->{$(\Delta f)(x, y) = (12x^2)(12y^2) - (0)^2 = 144x^2y^2.$ }\\
+	\uncover<7->{Thus, $(\Delta f)(x_0, y_0) > 0.$ }\\
+	\uncover<8->{Also, $f_{xx}(x_0, y_0) = 12x_0^2 > 0.$ }\\~\\
+	\uncover<9->{Thus, by the determinant test, we get that $f$ has a local minimum at $(x_0, y_0).$ }
+\end{frame}
+\begin{frame}{Sheet 7}
+	5. (ii) $f(x, y)=x^{3}+3 x^{2}-2 x y+5 y^{2}-4 y^{3}, \quad\left(x_{0}, y_{0}\right)=(0,0).$\\
+	\uncover<1->{Note that the above function is defined on $D = \mathbb{R}^2.$}\\
+	\uncover<2->{Thus, the given point is an interior point of $D.$ Moreover, it can be seen that the partial derivatives of all orders exist and are continuous everywhere. }\\
+	\uncover<3->{Note that $(\nabla f)(x, y) = (3x^2 + 6x - 2y, -2x + 10y - 12y^2)$.} \uncover<4->{Hence, $(\nabla f)(x_0, y_0) = 0.$ }\\
+	\uncover<5->{Thus, we can appeal to the determinant test. }\\~\\
+	\uncover<6->{$(\Delta f)(x, y) = (6x+6)(10 - 24y) - (-2)^2.$ }\\
+	\uncover<7->{Thus, $(\Delta f)(x_0, y_0) = (6)(10) - 4 = 56 > 0.$ }\\
+	\uncover<8->{Also, $f_{xx}(x_0, y_0) = 6 > 0.$ }\\~\\
+	\uncover<9->{Thus, by the determinant test, we get that $f$ has a local minimum at $(x_0, y_0).$ }
+\end{frame}
+\begin{frame}{Sheet 7}
+	6. (i) $f(x, y)=\left(x^{2}-y^{2}\right) e^{-\left(x^{2}+y^{2}\right) / 2}.$\\
+	\uncover<1->{Note that the above function is defined on $D = \mathbb{R}^2.$}\\
+	\uncover<2->{Thus, every point is an interior point of $D.$ Moreover, it can be seen that the partial derivatives of all orders exist and are continuous everywhere. } \hfill \uncover<3->{(How?) }\\
+	\uncover<4->{For $(x_0, y_0)$ to be a point of extrema or a saddle point, it must be the case that $(\nabla f)(x_0, y_0) = (0, 0).$ }\\~\\
+	\uncover<5->{Note that $f_x(x, y) =x e^{1 / 2\left(-x^{2}-y^{2}\right)}\left(-x^{2}+y^{2}+2\right).$ }\\
+	\uncover<6->{Also, $f_y(x, y) =y e^{1 / 2\left(-x^{2}-y^{2}\right)}\left(-x^{2}+y^{2}-2\right).$ }\\~\\
+	\uncover<7->{Thus, solving $(\nabla f)(x_0, y_0) = (0, 0)$ gives us that $(x_0, y_0) \in \{(0, 0),\;(0, \sqrt{2}),\;(0, -\sqrt{2}),\;(-\sqrt{2},0),\;(\sqrt{2}, 0)\}.$ }\\
+	\uncover<8->{Now, we determine the exact nature using the determinant test. }
+\end{frame}
+\begin{frame}{Sheet 7}
+	Recall that $(\Delta f)\left(x_{0}, y_{0}\right):=f_{x x}\left(x_{0}, y_{0}\right) f_{y y}\left(x_{0}, y_{0}\right)-f_{x y}\left(x_{0}, y_{0}\right)^{2}.$\\
+	\uncover<2->{Hence, in our case,
+	\[(\Delta f)(x, y) = -e^{-x^{2}-y^{2}}\left(x^{6}-x^{4} y^{2}-3 x^{4}-x^{2} y^{4}+22 x^{2} y^{2}-8 x^{2}+y^{6}-3 y^{4}-8 y^{2}+4\right).\] }\\
+	\uncover<3->{Moreover, $f_{xx}(x, y) = e^{-\left(x^{2}+y^{2}\right) / 2}(x^4 - x^2y^2 - 5x^2 + y^2 + 2)$ }\\
+	\uncover<3->{For $(x_0, y_0) = (0, 0),$ it is clear that it is a saddle point for $f$ as discriminant is $-4 < 0.$ }\\~\\
+	\uncover<4->{Note that if $x = 0,$ the discriminant reduces to $-e^{-y^2}(y^6 - 3y^4 -8y^2 + 4).$ }\\
+	\uncover<5->{Substituting $y = \pm\sqrt{2}$ gives us that the discriminant is positive with $f_{xx}$ positive and hence, the points are points of local minima. }\\~\\
+	\uncover<6->{Similarly, we get that the points $(\pm\sqrt{2}, 0)$ are points of local maxima as they have discriminant positive and $f_{xx}$ negative. }
+\end{frame}
+\begin{frame}{Sheet 7}
+	6. (ii) $f(x, y)=f(x, y)=x^{3}-3 x y^{2}.$\\
+	\uncover<1->{Note that the above function is defined on $D = \mathbb{R}^2.$}\\
+	\uncover<2->{Thus, every point is an interior point of $D.$ Moreover, it can be seen that the partial derivatives of all orders exist and are continuous everywhere. } \hfill \uncover<3->{(How?) }\\
+	\uncover<4->{For $(x_0, y_0)$ to be a point of extrema or a saddle point, it must be the case that $(\nabla f)(x_0, y_0) = (0, 0).$ }\\~\\
+	\uncover<5->{Note that $f_x(x, y) = 3x^2 - 3y^2.$ }\\
+	\uncover<6->{Also, $f_y(x, y) = -6xy.$ }\\~\\
+	\uncover<7->{Thus, solving $(\nabla f)(x_0, y_0) = (0, 0)$ gives us that $(x_0, y_0) = (0, 0).$ }\\
+	\uncover<8->{Now, we determine the exact nature using the determinant test. }
+\end{frame}
+\begin{frame}{Sheet 7}
+	Recall that $(\Delta f)\left(x_{0}, y_{0}\right):=f_{x x}\left(x_{0}, y_{0}\right) f_{y y}\left(x_{0}, y_{0}\right)-f_{x y}\left(x_{0}, y_{0}\right)^{2}.$\\
+	\uncover<2->{Hence, in our case,
+	\[(\Delta f)(x_0, y_0) = -36(x_0^2 + y_0^2).\] }
+	\uncover<3->{Thus, for $(x_0, y_0) = (0, 0),$ we get the discriminant is $0.$}\\
+	\uncover<4->{Hence, we get that }\uncover<5->{the discriminant test is {\color[rgb]{1, 0, 0} inconclusive!} }\\
+	\uncover<6->{This means that we must turn to some other analytic methods of determining the nature. }\\~\\
+	\uncover<7->{Now, we note that $f(\delta, 0) = \delta^3$ for all $\delta \in \mathbb{R}.$ }\\
+	\uncover<8->{Thus, given any $\epsilon > 0,$ choose $\delta = \pm \epsilon/2.$ }\\
+	\uncover<9->{This gives us that $(0, 0)$ is saddle point. } \hfill \uncover<10->{(How?) }
+\end{frame}
+\begin{frame}{Sheet 7}
+	7. To find: Absolute maxima and minima of $f(x, y)=\left(x^{2}-4 x\right) \cos y \text { for } 1 \leq x \leq 3,-\pi / 4 \leq y \leq \pi / 4.$\\
+	Note that the domain is a closed and bounded set. As $f$ is continuous on the domain, $f$ does achieve a maximum and a minimum.
+	\uncover<2->{ Note that $f_x(x, y) = (2 x-4) \cos y$ and $f_y(x, y) = -\left(x^{2}-4 x\right) \sin y$ for interior points $(x, y).$}\\
+	\uncover<3->{Thus, the only critical point is $p_1 = (2, 0).$}\\~\\
+	\uncover<4->{Now we restrict ourselves to the boundaries to find the local extrema.}\\
+	\uncover<5->{``Right boundary:'' This is the line segment $x = 3, -\pi / 4 \leq y \leq \pi / 4.$ }\\
+	\uncover<6->{The function now reduces to $-3\cos y$ on this segment. }\\
+	\uncover<7->{Using our theory from one-variable calculus, we get that we need to check the points $(3, 0),\;(3, \pi/4),\;(3, -\pi/4).$ } \hfill \uncover<7->{(How?)}\\~\\
+	\uncover<8->{Similar consideration of the ``left boundary'' gives us the points $(1, 0),\;(1, \pi/4),\;(1, -\pi/4).$}
+\end{frame}
+\begin{frame}{Sheet 7}
+	Now, we look at the ``top boundary.''\\
+	\uncover<2->{The function there reduces to $\frac{x^2 - 4x}{\sqrt{2}}.$ }\\
+	\uncover<3->{Once again, using our theory from one-variable calculus, we get that we need to check the points $(1, \pi/4),\;(2, \pi/4),\;(3, \pi/4).$ }\\~\\
+	\uncover<4->{Similarly, checking the ``bottom boundary'' gives us the points $(1, -\pi/4),\;(2, -\pi/4),\;(3, -\pi/4).$ }\\
+	\uncover<5->{We now tabulate our results as follows: }
+	\uncover<6->{
+	\[\begin{array}{|c||c|c|c|c|c|}
+	\hline
+	(x_0, y_0) & (2, 0) & (3, 0) & (3, \pi/4) & (2, \pi/4) & (1, \pi/4) \\
+	\hline
+	f(x_0, y_0) & -4 & -3 & \dfrac{-3}{\sqrt{2}} & \dfrac{-4}{\sqrt{2}} & \dfrac{-3}{\sqrt{2}} \\
+	\hline
+	\hline
+	(x_0, y_0) & (1, 0) & (1, -\pi/4) & (2, -\pi/4) & (3, -\pi/4) &  \\
+	\hline
+	f(x_0, y_0) & -3 & \dfrac{-3}{\sqrt{2}} & \dfrac{-4}{\sqrt{2}} & \dfrac{-3}{\sqrt{2}} & \\
+	\hline 
+	\end{array}
+	\]
+	}
+	\uncover<7->{Thus, we get that $f_{\min} = -4$ at $(2, 0)$ and $f_{\max} = -\frac{3}{\sqrt{2}}$ at $(1, \pm \pi/4)$ and $(3, \pm\pi/4).$}
+\end{frame}
+
+
+\end{document}s

@@ -1,0 +1,464 @@
+\documentclass[handout]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ stmaryrd }
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usetheme{Madrid}
+% \mode<presentation>{}
+\usecolortheme{default}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\cosec}{\operatorname{cosec}}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[MA109 Calculus-I] %optional
+{MA109 Calculus-I}
+
+\subtitle{D4-T6 Tutorial 2}
+
+\author[Adish Shah] % (optional)
+{Adish Shah}
+
+
+
+\date[15th December 2021] % (optional)
+{15th December 2021}
+
+
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{2)}
+We are given that $\displaystyle\lim_{x\to \alpha}f(x)$ exists. Let it be $c (\in \mathbb{R}).$ Note that it's {\color[rgb]{1, 0, 0} not} necessary that $c = f(\alpha).$\\
+	Let us evaluate $\displaystyle\lim_{h\to 0}f(\alpha + h).$ Let $(h_n)$ be an arbitrary sequence of real numbers such that $h_n \neq 0$ and $h_n \to 0.$ We need to find $\displaystyle\lim_{n\to \infty}f(\alpha + h_n).$\\
+	Consider the sequence $(x_n)$ of real numbers defined as $x_n := \alpha + h_n.$ Thus, $x_n \neq \alpha$ and $x_n \to \alpha.$ By hypothesis, we must have that $\displaystyle\lim_{n\to \infty}f(x_n) = c.$\\
+	Thus, by definition of $x_n,$ we must have that $\displaystyle\lim_{n\to \infty}f(\alpha + h_n) = c.$ This gives us that $\displaystyle\lim_{h\to 0}f(\alpha + h) = c.$\\
+	Similar consideration will give $\displaystyle\lim_{h\to 0}f(\alpha - h_n) = c$ as well.\\
+	Using the limit theorems for functions, we have that:
+	\[\lim_{h\to 0}[f(\alpha + h) - f(\alpha - h)] = \lim_{h\to 0}f(\alpha+h) - \lim_{h\to 0}f(\alpha-h) = c - c = 0.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{2) Continued}
+The converse is false.
+
+Let us take a counterexample as follows, consider $\alpha = 0$ and
+\begin{equation*} 
+    f(x) = \begin{cases}
+        1 & x \neq 0,\\
+        \frac{1}{|x|} & x = 0.
+    \end{cases}
+\end{equation*}
+    
+\end{frame}
+%---------------------------------------------------------
+% %This block of code is for the table of contents after
+% %the title page
+% \begin{frame}
+% \frametitle{Table of Contents}
+% \tableofcontents
+% \end{frame}
+% %---------------------------------------------------------
+
+% \begin{frame}
+%   \frametitle{Definition of convergence of a sequence}
+%   \begin{block}{Definition}
+%     Let $(a_{n})$ be a sequence of real numbers. We say that $(a_{n})$ is convergent if there is $L \in \mathbb{R}$ such that
+%     the following condition holds. For every $\epsilon > 0 $, there is $n_{0} \in \mathbb{N}$ such that 
+%     $|a_{n}-L| < \epsilon $ for all $n \ge n_{0}$.
+%   \end{block}  
+%   This is known as the $\epsilon - n_{0}$ definition of convergence of a sequence.
+
+%   In this case, we say that $(a_{n})$ converges to L, or that L is the limit of $(a_{n})$, and we write
+
+%   \[\lim_{n \rightarrow \infty} a_{n} = L \]
+
+%   Some properties of convergent sequences :
+%   \begin{itemize}
+%     \item<1-> Every convergent sequence is bounded.
+%     \item<2-> Every bounded \textbf{and} monotonic sequence is convergent.
+%   \end{itemize}
+% \end{frame}
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{3 (i)}
+Claim : The function is continuous everywhere except at $x = 0$
+
+Proof for this is as follows : 
+For $x \ne  0$, f is a composition of continuous functions $\frac{1}{x}$ and $\sin{x}$. Therefore f is continuous 
+for $x \ne  0$
+
+To see that f is discontinuous at $x = 0 $:
+
+Consider the sequence $(x_n)$ where $x_n = \dfrac{2}{(4n+1)\pi}.$\\
+	Then, $x_n \to 0$ but $f(x_n) = 1 \quad \forall n \in \mathbb{N}$ and thus, $f(x_n) \to 1 \neq f(0).$\\
+	Thus, $f$ is discontinuous at $x = 0,$ by definition.
+\end{frame}
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{3 (ii)}
+Claim : The function is continuous everywhere.
+
+Proof for this is as follows : 
+For $x \ne  0$, f is a product and composition of continuous functions. Therefore f is continuous for $x \ne 0$.
+
+To show continuity at $x = 0$:
+Let $(x_n)$ be any sequence of real numbers such that $x_n \to 0.$ We must show that $f(x_n) \to 0.$\\
+Let $\epsilon > 0$ be given.\\
+Observe that $|f(x_n) - 0| = \left|x_n\sin\left(\dfrac{1}{x_n}\right)\right| \le |x_n|.$ (as $|\sin{x}| \le 1 \; \; \; \forall x$)\\
+Now, we shall use the fact $x_n \to 0.$ By this hypothesis, there must exist $n_1 \in \mathbb{N}$ such that $|x_n| = |x_n - 0| < \epsilon \quad \forall n \ge n_1.$\\
+Choosing $n_0 = n_1,$ we have it that $|f(x_n) - 0| \le |x_n| < \epsilon \quad \forall n \ge n_0.$ 
+\end{frame}
+
+\begin{frame}
+\frametitle{4)}
+Given  $f(x + y) = f(x) + f(y)$ for all $x, y \in \mathbb{R}.$
+ Thus, we can let $x = y = 0.$ This gives us that:\\
+	$f(0 + 0) = f(0) + f(0) \implies f(0) = 0.$\\
+	As $f$ is continuous at $0,$ we have it that $\displaystyle\lim_{h\to 0}f(h) = f(0) = 0.$\\~\\
+    Thus,
+    \[\lim_{h \rightarrow 0} f(c+h) =  \lim_{h \rightarrow 0}[f(c)+f(h)] = f(c)\]
+    showing that f is continuous at $x = c$.
+    (As $\displaystyle\lim_{h\to 0}f(c) = f(c)$ (constant sequence) )
+
+    Optional: First verify the equality for all $k \in \mathbb{Q}$ and then use the continuity of f and density of rationals to
+    establish it for all $k \in \mathbb{R}$.
+	% Now, we will show that $f$ is continuous at every $c \in \mathbb{R}.$\\
+	% Substituting $x = c$ in the original equation gives us:
+	% $f(c+y) = f(c) + f(y).$ As this is true for every $y \in \mathbb{R},$ we have that: $\displaystyle\lim_{y\to 0}f(c+y) = \lim_{y\to 0}[f(c) + f(y)].$\\~\\
+	% We know that $\displaystyle\lim_{y\to 0}f(c) = f(c)$ (constant sequence) and $\displaystyle\lim_{y\to 0}f(y) = 0$ (shown above). Thus, we can write: \\
+	% $\displaystyle\lim_{y\to 0}f(c+y) = \lim_{y\to 0}f(c) + \lim_{y\to 0} f(y) = f(c).$ This is precisely what it means for $f$ to be continuous at $c.$\\
+\end{frame}
+
+\begin{frame}
+\frametitle{5)}
+$f(x) = x^2sin\dfrac{1}{x}$; if $x \neq 0$ and $f(0) = 0$.
+As earlier, differentiability of f at $x \ne 0 $ follows due to product/composition
+rules.
+\begin{align*}
+f'(0)&=\underset{h \to 0}{\lim}\dfrac{f(0+h)-f(0)}{h}\\
+&=\underset{h \to 0}{\lim}\dfrac{h^2sin(\dfrac{1}{h})}{h}\\
+&=\underset{h \to 0}{\lim}hsin(\dfrac{1}{h})\\
+&=0
+\end{align*}
+Hence, f is differentiable at 0 also, so it is differentiable everywhere.
+\end{frame}
+\begin{frame}
+    \frametitle{5) Continued}
+    Now, for $x \neq 0,$ we can compute the derivative using product/chain rule.
+    \begin{equation*} 
+        f'(x) = \begin{cases}
+            2x\sin\left(\dfrac{1}{x}\right) - \cos\left(\dfrac{1}{x}\right) & x \neq 0,\\
+            0 & x = 0.
+        \end{cases}
+    \end{equation*}
+% Let {$x_n$}={$\frac{1}{2n\pi}$}, $y_n$={$\dfrac{1}{(2n+0.5)\pi}$}.
+Consider the sequence
+		\begin{equation*} 
+			x_n \vcentcolon= \dfrac{1}{2n\pi}, \qquad n \in \mathbb{N}.
+		\end{equation*}
+		Clearly, we have that $x_n \to 0$ and $x_n \neq 0.$ Thus, we get
+		\begin{equation*} 
+			f'(x_n) = -\cos(2n\pi) = -1.
+		\end{equation*}
+
+		Thus, we see that $f'(x_n) \to -1 \neq f'(0).$ \\
+		This shows that $f'$ is not continuous.
+% $\underset{n \to \infty}{\lim}f(x_n)\neq \underset{n \to \infty}{\lim}f(y_n)$. So $f'(x)$ is discontinuous at $x=0$.
+\end{frame}
+
+\begin{frame}
+\frametitle{7)}
+\[\lim_{h\to 0^+}\dfrac{f(c + h) - f(c - h)}{2h}%
+		= \lim_{h\to 0^+}\dfrac{f(c + h) - f(c) + f(c) - f(c - h)}{2h}\]
+
+Now, it is given that $f$ is differentiable at $c.$ $\implies \displaystyle\lim_{h\to 0^+}\dfrac{f(c + h) - f(c)}{h}$ exists and is equal to $f'(c).$\\
+Similarly, the limit $\displaystyle\lim_{h\to 0^+}\dfrac{f(c) - f(c-h)}{h}$ exists and equals $f'(c).$ Now that we know the existence of these limits, we can split the sum above.\\~\\
+$\displaystyle\lim_{h\to 0^+}\dfrac{f(c + h) - f(c) + f(c) - f(c - h)}{2h}$\\~\\
+$=\displaystyle\dfrac{1}{2}\left(\lim_{h\to 0^+}\dfrac{f(c + h) - f(c)}{h} + \lim_{h\to 0^+}\dfrac{f(c) - f(c - h)}{h}\right)$\\~\\
+$=\dfrac{1}{2}\left(f'(c) + f'(c)\right) = f'(c).$ Converse isn't true. (Verify by taking $f(x)=|x|$)
+\end{frame}
+
+\begin{frame}
+\frametitle{9 (i)}
+Let $f(x) := \cos x$ for $x \in (0, \pi).$ 
+Then $f$ is one-one and continuous. Consider $c \in (0, \pi).$ Now $f'(c) = -\sin c \neq 0.$\\
+	Further, $f\left((0, \pi)\right) = (-1, 1).$ If $d \in (-1, 1)$ and $f(c) = \cos c = d,$ then
+	\[(f^{-1})'(d) = \dfrac{1}{f'(c)} = -\dfrac{1}{\sin c} = - \dfrac{1}{\sqrt{1 - \cos^2c}} = - \dfrac{1}{\sqrt{1 - d^2}}.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{9 (ii)}
+(ii) Let $f(x) := \cosec x$ for $x \in \left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)\setminus\{0\}.$ Then $f$ is one-one and continuous. Consider $c \in \left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)\setminus\{0\}.$ Now $f'(c) = -\cosec c\cot c = -\cosec^2 c\cos c \neq 0.$\\
+	Further, $f\left(\left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)\setminus\{0\}\right) = (-\infty, -1)\cup(1, \infty).$ If $|d| > 1$ and $f(c) = \cosec c= d,$ then
+	\[(f^{-1})'(d) = \dfrac{1}{f'(c)} = - \dfrac{1}{\cosec^2 c \cos c} = - \dfrac{1}{\cosec^2 c \sqrt{1 - \frac{1}{\cosec^2 c}}} \]
+    \[= - \dfrac{1}{|d|\sqrt{d^2 - 1}}.\]
+\end{frame}
+
+%-----------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{10)}
+Given \(y = f\left(\frac{2x-1}{x+1}\right)\) and \(f'(x) = \sin{x^{2}}\).
+
+Define $g(x) := \dfrac{2x - 1}{x + 1}$ for $x \in \mathbb{R}\setminus\{1\}.$\\~\\
+Given, $y = (f\circ g)(x).$ As $g$ is differentiable in its domain and so is $f,$ we know that $f\circ g$ is differentiable wherever defined and its derivative is given by:
+\[\dfrac{dy}{dx} = (f\circ g)'(x) = f'(g(x))g'(x) = \sin\left((g(x))^2\right)g'(x).\]
+\[ g'(x) = \dfrac{3}{(x+1)^2} \]
+\[\therefore \dfrac{dy}{dx} = \sin\left(\left(\dfrac{2x - 1}{x+1}\right)^2\right)\dfrac{3}{(x+1)^{2}}\]
+
+\end{frame}
+
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+    \frametitle{11)}
+Consider \(f(x):= |x|+|1-x| \) for \(x \in \mathbb{R}\).
+This is continuous everywhere. It is differentiable everywhere except at $x = 0,1$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{12)}
+    For $c \in \mathbb{R}$, consider a sequence $\{a_{n}\} \; \; n \ge 1 $ of rational numbers and a sequence $\{b_{n}\} \; \; n \ge 1 $
+    of irrational numbers, both converging to c. 
+    
+    Then $\{f (a_{n})\} \; \; n \ge 1$  converges to 1 while
+    $\{f (b_{n})\} \; \; n \ge 1$ converges to 0, showing that limit of f at c does not exist.
+\end{frame}
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{15)}
+$(i)\Rightarrow (ii)$\\
+Let $\delta>0$ be such that $(c-\delta,c+\delta) \subseteq (a,b)$. And let $\alpha =f'(c)$, then 
+$$\epsilon_1(h)=\dfrac{f(c+h)-f(c)-\alpha h}{h}\text{ if }h\neq 0$$
+and $\epsilon_1(0)=0$. Check that $\underset{h \to 0}{\lim}\epsilon_1(h)=f'(c)-\alpha=0$. So this function satisfies all the properties we need.\\
+$(ii)\Rightarrow (iii)$\\
+\begin{align*}
+\underset{h \to 0}{\lim}\dfrac{|f(c+h)-f(c)-\alpha h|}{|h|}&=\underset{h \to 0}{\lim}|\epsilon_1(h)|\\
+&=0\\
+\end{align*}
+Here I used the fact $\underset{x \to c}{\lim}f(x)=0 \Leftrightarrow\underset{x \to c}{\lim}|f(x)|=0$(it is a consequence of $||f(x)|-L|=|f(x)-L|$ for $L=0$ )
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{15) Continued}
+    $(iii) \Rightarrow (i)$
+    \begin{align*}
+    \underset{h \to 0}{\lim}\dfrac{|f(c+h)-f(c)-\alpha h|}{|h|}&=0\\
+    \Rightarrow \underset{h \to 0}{\lim}\dfrac{f(c+h)-f(c)-\alpha h}{h}&=0\\
+    \Rightarrow \underset{h \to 0}{\lim}\dfrac{f(c+h)-f(c)}{h}&=\alpha\\
+    \Rightarrow f'(c)=\alpha
+    \end{align*}
+    So $f(x)$ is differentiable at $x=c$.
+    So all (i), (ii) and (iii) are equivalent.
+    \end{frame}
+
+
+%---------------------------------------------------------
+
+%Example of the \pause command
+% \begin{frame}
+%  in this slide \pause
+
+% the text will be sounds partially visible \pause
+
+% And finally everything will be there
+% \end{frame}
+%---------------------------------------------------------
+
+
+% \section{Background of Shor's Algorithm}
+% %---------------------------------------------------------
+% \begin{frame}
+% \frametitle{Background}
+%     Let us look at the background of Shor's algorithm
+%     \begin{itemize}
+%       \item<1-> Quantum Algorithm, to find the prime factors of any given integer N
+%       \item<2-> Named after a mathematician, Peter Shor who formulated the algorithm in 1994.
+%       \item<3-> This algorithm cam factor a number N in $O((logN)^3)$ time and $O(logN)$ space.
+%       \item<4-> This demonstrates that an integer factorization can be done on a quantum computer in polynomial time. 
+%     \end{itemize}
+% \end{frame}
+% \begin{frame}
+% \frametitle{RSA}
+%     RSA is a popular encyrption technique that uses a public key N which is the product of two large prime numbers.
+%     \begin{itemize}
+%       \item<1-> One way to crack RSA encyrption is by factoring N, but, with classical algorithms, factoring becomes increasingly time-consuming as N grows larger.
+%       \item<2-> More specifically, there is \textbf{no classical algorithm} known that can factor a number N in polynomial time.
+%     \end{itemize}
+%   \end{frame}
+% \section{Grover's algorithm}
+
+% \begin{frame}
+%   Like many other quantum algorithms, Shor's algorithm is probabilistic. \pause
+%   This means that it will give the correct answer with high probability, and the probability of success can be increased by performing more iterations.
+% \end{frame}
+
+% \begin{frame}
+% Discrete Fourier Transform acts on a vector of complex numbers, $x_{0},x_{1},\dots , x_{N-1}$. of fixed length N, and outputs another vector of complex numbers,$y_{0},y_{1},\dots , y_{N-1}$ given by :
+% $$y_{k} = \frac{1}{\sqrt{N}} \sum_{j=0}^{N-1}x_{j}e^{2 \pi ijk/N}$$ \pause
+% The quantum Fourier Transform is defined in a similar way. The QFT on an orthonormal basis of vectors $\ket{0},\ket{1},\dots,\ket{N-1}$ is defined to be a linear operator with the following action on the basis state:
+% $$\ket{j} \shortrightarrow  \frac{1}{\sqrt{N}} \sum_{j=0}^{N-1} \ket{k}e ^{2 \pi ijk/N}$$ \pause
+% This can also be seen as :
+% $$ \sum_{j=0}^{N-1} x_{j} \ket{j} = \sum_{k=0}^{N-1}y_{k} \ket{k}$$
+
+% \end{frame}
+%---------------------------------------------------------
+% %Highlighting text
+% \begin{frame}
+% \frametitle{Introduction to Grover's algorithm}
+
+% % In this slide, some important text will be
+% % \alert{highlighted} because it's important.
+
+% % Please, don't abuse it.
+
+% % \begin{block}{Remark}
+% % Sample text
+% % \end{block}
+
+% % \begin{alertblock}{Important theorem}
+% % Sample text in red box
+% % \end{alertblock}
+
+% % \begin{examples}
+% % Sample text in green box. The title of the block is ``Examples".
+% % \end{examples}
+% % \end{frame}
+
+% Let us now look at another classical computing task that can be sped up using the superposition principle. \pause
+
+% Our aim is to solve the needle in a haystack problem where we have to search for an element which satisfies a particular property, and it lies in a haystack of $N$ elements. \pause
+
+% Classically, this would take $O(N)$ steps to do this task, but Grover's algorithm allows us to do it in $O(\sqrt{N})$ steps.
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Problem statement}
+%   \begin{block}{Problem}
+%     Suppose f(x) is a function from $\{0,1,\dots\}$ to $\{0,1\}$. f(a) = 1, only for one value of a. Find a. Assume that $N = 2^{n}$. This way you can work with n qubits.
+%   \end{block}  
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Solution - Grover's Method}
+%   \begin{center}
+%     Let us define two new state vectors : \pause 
+%   \end{center}
+%   $$ \ket{\Psi_{0}} = \sum_{i=0}^{N-1} \frac{\ket{i}}{\sqrt{N}} $$ \pause
+%   $$ \ket{e} = \sum_{i=0, i \neq a}^{N-1} \frac{\ket{i}}{\sqrt{N-1}} $$ \pause 
+  
+%   \begin{center}
+%     Our goal is to ensure that we obtain $\ket{a}$ in the end. Notice that \pause
+%     $$     \ket{\Psi_{0}} = \frac{\sqrt{N-1}\ket{e}+ \ket{a}}{\sqrt{N}}    $$ 
+%     Thus $\ket{\Psi_{0}}$ lies in the subspace spanned by $\ket{e}$ and $\ket{a}$
+%   \end{center}
+
+% \end{frame}
+% \begin{frame}
+%   Note that, $\ket{\Psi_{0}}$ will be closer to $\ket{e}$ than $\ket{a}$. \pause
+% %   \begin{figure}[htp]
+% %     \centering
+% %     \includegraphics[scale = 0.5]{grover.png}
+% %   \end{figure}
+% \end{frame}
+% %---------------------------------------------------------
+% \begin{frame}
+%   We aim to take a vector $\ket{\Psi}$ which will initially be equal to $\ket{\Psi_{0}}$. \pause
+
+
+%   Rotate it so that it ends up getting close to $\ket{a}$ \pause
+
+
+%   First reflect $\Psi$ about $\ket{e}$ and then about $\ket{\Psi_{0}}$.
+%   Reflecting about $\ket{e}$ can be considered as an oracle that performs the operation O
+%   $$ \ket{x} \shortrightarrow (-1)^{f(x)}\ket{x}$$ \pause
+%   The way to achieve this is to take an oracle that performs the operation 
+%   $$ \ket{x}\ket{y} \shortrightarrow \ket{x} \ket{y \oplus f(x)}$$
+%   Let $\ket{y}$ = $\frac{\ket{0}-\ket{1}}{\sqrt{2}}$ \pause
+%   If x = a, $$\ket{x} \ket{y} \shortrightarrow - \ket{x} \ket{y} $$
+%   Else, state will be preserved.
+
+% \end{frame}
+
+% \begin{frame}
+%   \begin{block}{Remark}
+%     It turns out mathematically, that Grover's operator G is 
+%   $$G = (2\ket{\Psi_{0}}\bra{\Psi_{0}}- I)O$$ 
+%   \end{block}
+%   \pause 
+% %   \begin{figure}[htp]
+% %     \centering 
+% %     \includegraphics[scale = 0.3]{Screenshot from 2021-07-19 22-30-03.png}
+% %   \end{figure} \pause
+%   Let $\ket{\Psi_{0}}$ make an angle $\theta$ with $\ket{e}$ in the two dimension subspace. Then,
+%   $$ sin(\theta) = \frac{1}{\sqrt{N}} $$
+% \end{frame}  
+% %---------------------------------------------------------
+% %Two columns
+% \begin{frame}
+  
+% \begin{block}{Remark}
+%   By induction, 
+%   $$G^{k} \ket{\Psi_{0}} = cos((2k+1)\theta)\ket{e} + sin((2k+1)\theta)\ket{a}$$
+% \end{block}
+%  \pause 
+% Applying G successively on $\ket{\Psi_{0}}$ rotates the vector by an angle $2\theta$ \pause 
+
+
+% Goal is to make the angle between $\ket{\Psi}$ and $\ket{a} \le \theta$ \pause 
+
+
+% Probability of collapsing will be $\ge cos(\theta) = \frac{\sqrt{N-1}}{\sqrt{N}}$ 
+
+% \end{frame}
+% \begin{frame}
+%   \frametitle{Conclusion}
+%   How many operations of G do we need though? \pause 
+%   Clearly we require [$\frac{\pi}{4\theta}$] applications of G. As $\theta \ge sin(\theta) = \frac{1}{\sqrt{N}}$,
+%   $$[\frac{\pi}{4\theta}] \le \frac{\pi \sqrt{N}}{4}$$ \pause 
+%   Thus we need only $O(\sqrt{N})$ operations to achieve the task with probability $\ge \frac{\sqrt{N-1}}{\sqrt{N}} $
+
+% \end{frame}
+%---------------------------------------------------------
+
+
+\end{document}
